@@ -1,0 +1,88 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "watch",
+            "dependsOn": [
+                "watch:browser-tools-mcp",
+                "watch:browser-tools-server",
+                "watch:tsc"
+            ],
+            "presentation": {
+                "reveal": "never",
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "watch:browser-tools-mcp",
+            "type": "shell",
+            "command": "pnpm serve",
+            "group": "build",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "group": "watch"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/packages/browser-tools-mcp",
+                "env": {
+                    "NODE_OPTIONS": "--inspect=9229",
+                    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+                    // "PATH": "/Users/justinhone/.nvm/versions/node/v23.8.0/bin:${env:PATH}"
+                }
+            },
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+        },
+        {
+            "label": "watch:browser-tools-server",
+            "type": "shell",
+            "command": "pnpm serve",
+            "group": "build",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "group": "watch"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/packages/browser-tools-server",
+                "env": {
+                    "NODE_OPTIONS": "--inspect=9230",
+                    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+                    // "PATH": "/Users/justinhone/.nvm/versions/node/v23.8.0/bin:${env:PATH}"
+                }
+            },
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+        },
+        {
+            "label": "watch:tsc",
+            "type": "shell",
+            "command": "turbo",
+            "args": [
+                "run",
+                "watch:tsc"
+            ],
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "group": "watch"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${workspaceFolder}/node_modules/.bin:${env:PATH}"
+                    // "PATH": "/Users/justinhone/.nvm/versions/node/v23.8.0/bin:${env:PATH}"
+                }
+            }
+        }
+    ]
+}

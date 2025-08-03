@@ -7,10 +7,15 @@
     "browser-tools-mcp": "dist/mcp-server.js"
   },
   "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "start": "pnpm start:hot",
+    "serve": "nodemon dist/mcp-server.js",
+    "watch:tsc": "tsc --watch --preserveWatchOutput",
     "inspect": "tsc && npx @modelcontextprotocol/inspector node -- dist/mcp-server.js",
     "inspect-live": "npx @modelcontextprotocol/inspector npx -- @agentdeskai/browser-tools-mcp",
-    "build": "tsc",
-    "start": "tsc && node dist/mcp-server.js",
+    "start:static": "tsc && node dist/mcp-server.js",
+    "start:hot": "concurrently \"npm run serve\" \"npm run dev\"",
     "prepublishOnly": "npm run build",
     "update": "npm run build && npm version patch && npm publish"
   },
@@ -36,12 +41,14 @@
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@types/ws": "^8.5.14",
     "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "@types/node-fetch": "^2.6.11",
+    "@types/ws": "^8.5.14",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
     "typescript": "^5.7.3"
   }
 }

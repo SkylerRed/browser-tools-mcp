@@ -8,9 +8,15 @@
     "browser-tools-server": "./dist/browser-connector.js"
   },
   "scripts": {
+    "dev": "tsc -w --preserveWatchOutput",
     "build": "tsc",
-    "start": "tsc && node dist/browser-connector.js",
-    "prepublishOnly": "npm run build"
+    "start": "pnpm start:hot",
+    "start:static": "tsc && node dist/browser-connector.js",
+    "start:hot": "concurrently \"npm run serve\" \"npm run dev\"",
+    "prepublishOnly": "npm run build",
+    "serve": "nodemon dist/browser-connector.js",
+    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "update": "npm run build && npm version patch && npm publish"
   },
   "keywords": [
     "browser",
@@ -38,13 +44,15 @@
     "chrome-launcher": "^1.1.2"
   },
   "devDependencies": {
-    "@types/ws": "^8.5.14",
     "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "@types/node-fetch": "^2.6.11",
     "@types/puppeteer-core": "^7.0.4",
+    "@types/ws": "^8.5.14",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
     "typescript": "^5.7.3"
   }
 }
