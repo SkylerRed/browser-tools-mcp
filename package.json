@@ -1,0 +1,31 @@
+{
+  "name": "browser-tools-mcp",
+  "version": "1.0.0",
+  "description": "> Make your AI tools 10x more aware and capable of interacting with your browser",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "turbo run start --parallel",
+    "build": "turbo run build --parallel",
+    "watch:tsc": "tsc --noEmit --watch --project src/tsconfig.json",
+    "clean": "rimraf node_modules && pnpm m exec -- rm -rf node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkylerRed/browser-tools-mcp.git"
+  },
+  "author": "justinhone <justinhonejiang@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkylerRed/browser-tools-mcp/issues"
+  },
+  "homepage": "https://github.com/SkylerRed/browser-tools-mcp#readme",
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "tsc-watch": "^7.1.1",
+    "turbo": "^2.5.5"
+  }
+}
