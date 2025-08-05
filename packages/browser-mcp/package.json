@@ -1,6 +1,6 @@
 {
   "name": "@agent-flow/browser-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A browser tools server for capturing and managing browser events, logs, and screenshots",
   "type": "module",
   "main": "dist/src/index.js",
@@ -8,7 +8,7 @@
     "browser-tools-server": "./dist/src/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "start": "pnpm start:hot",
     "dev": "npm run watch:tsc",
     "start:static": "tsc && node dist/browser-connector.js",
@@ -18,7 +18,7 @@
     "prepublishOnly": "npm run build",
     "serve": "nodemon dist/browser-connector.js",
     "watch:tsc": "tsc --watch --preserveWatchOutput",
-    "update": "npm run build && npm version patch && npm publish"
+    "update": "npm run build && npm version patch && npm publish --access public"
   },
   "keywords": [
     "browser",
