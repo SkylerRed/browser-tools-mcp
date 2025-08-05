@@ -13,7 +13,7 @@
     "serve": "nodemon dist/mcp-server.js",
     "watch:tsc": "tsc --watch --preserveWatchOutput",
     "inspect": "tsc && npx @modelcontextprotocol/inspector node -- dist/mcp-server.js",
-    "inspect-live": "npx @modelcontextprotocol/inspector npx -- @agentdeskai/browser-tools-mcp",
+    "inspect:live": "npx @modelcontextprotocol/inspector npx -- @agentdeskai/browser-tools-mcp",
     "start:static": "tsc && node dist/mcp-server.js",
     "start:hot": "concurrently \"npm run serve\" \"npm run dev\"",
     "prepublishOnly": "npm run build",

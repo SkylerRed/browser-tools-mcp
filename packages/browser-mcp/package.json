@@ -1,0 +1,60 @@
+{
+  "name": "@agent-flow/browser-mcp",
+  "version": "1.0.0",
+  "description": "A browser tools server for capturing and managing browser events, logs, and screenshots",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "bin": {
+    "browser-tools-server": "./dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "pnpm start:hot",
+    "dev": "npm run watch:tsc",
+    "start:static": "tsc && node dist/browser-connector.js",
+    "start:hot": "concurrently \"npm run dev\" \"npm run inspect\"",
+    "inspect": "npx @modelcontextprotocol/inspector /bin/bash -- inspect.sh",
+    "inspect:live": "npx @modelcontextprotocol/inspector npx -- @agent-flow/browser-mcp",
+    "prepublishOnly": "npm run build",
+    "serve": "nodemon dist/browser-connector.js",
+    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "update": "npm run build && npm version patch && npm publish"
+  },
+  "keywords": [
+    "browser",
+    "tools",
+    "debugging",
+    "logging",
+    "screenshots",
+    "chrome",
+    "extension"
+  ],
+  "author": "justinhone <justinhonejiang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "lighthouse": "^11.6.0",
+    "llm-cost": "^1.0.5",
+    "node-fetch": "^2.7.0",
+    "puppeteer-core": "^22.4.1",
+    "ws": "^8.18.0"
+  },
+  "optionalDependencies": {
+    "chrome-launcher": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "@types/node-fetch": "^2.6.11",
+    "@types/puppeteer-core": "^7.0.4",
+    "@types/ws": "^8.5.14",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.7.3"
+  }
+}
